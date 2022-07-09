@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
+
 /* eslint-disable no-bitwise */
 /* eslint-disable no-shadow */
 import React from 'react';
-import {useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function App() {
   // Mapeamento de teclas
@@ -16,13 +18,13 @@ export default function App() {
     8,
     9,
     'x',
-    6,
-    5,
     4,
+    5,
+    6,
     '-',
-    3,
-    2,
     1,
+    2,
+    3,
     '+',
     0,
     '.',
@@ -30,8 +32,8 @@ export default function App() {
     '=',
   ];
 
-  const [currentNumber, setCurrentNumber] = useState('');
-  const [lastNumber, setLastNumber] = useState('');
+  var [currentNumber, setCurrentNumber] = useState('');
+  var [lastNumber, setLastNumber] = useState('');
 
   function calculator() {
     const splitNumbers = currentNumber.split(' ');
@@ -62,14 +64,16 @@ export default function App() {
   function handleInput(buttonPressed) {
     console.log(buttonPressed); // Mostra no Console a tecla pressionada
     if (
-      (buttonPressed === '+') |
-      (buttonPressed === '-') |
-      (buttonPressed === 'x') |
-      (buttonPressed === '/')
+      buttonPressed === '+' ||
+      buttonPressed === '-' ||
+      buttonPressed === 'x' ||
+      buttonPressed === '/' ||
+      buttonPressed === '%'
     ) {
       setCurrentNumber(currentNumber + ' ' + buttonPressed + ' ');
       return;
     }
+
     switch (buttonPressed) {
       case 'DEL':
         setCurrentNumber(currentNumber.substring(0, currentNumber.length - 1));
@@ -104,8 +108,8 @@ export default function App() {
             <TouchableOpacity
               onPress={() => handleInput(button)}
               key={button}
-              style={[styles.button, {backgroundColor: '#3dd0e3'}]}>
-              <Text style={[styles.textButton, {color: 'white', fontSize: 30}]}>
+              style={[styles.button, { backgroundColor: '#3dd0e3' }]}>
+              <Text style={[styles.textButton, { color: 'white', fontSize: 30 }]}>
                 {button}
               </Text>
             </TouchableOpacity>
@@ -118,7 +122,7 @@ export default function App() {
               <Text
                 style={[
                   styles.textButton,
-                  {color: typeof button === 'number' ? 'black' : '#0093a6'},
+                  { color: typeof button === 'number' ? 'black' : '#0093a6' },
                 ]}>
                 {button}
               </Text>
